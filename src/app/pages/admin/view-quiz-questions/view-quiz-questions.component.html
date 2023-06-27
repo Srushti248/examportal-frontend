@@ -1,0 +1,49 @@
+
+<h1 class="mt20">Add Questions of {{qTitle}}</h1>
+<div class="boostrap wrapper">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container text-center mt20">
+                <button [routerLink]="'/admin-dashboard/add-question/' + qid+'/'+ qTitle" mat-raised-button style="background-color: #fd7e14; color: white;">Add Questions</button>
+            </div>
+
+           <mat-card *ngFor ="let q of questions ; let i =index" style="margin-top:0.3%;">
+
+               <mat-card-content>
+                         
+                  <p>
+                    <b> Q{{i+1}}</b> &nbsp;
+                    <span [innerHtml]="q.content"></span> 
+                  </p>
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <p><b>1]</b>&nbsp;{{q.option1}}</p>
+                          </div>
+                          <div class="col-md-6">
+                              <p><b>2]</b>&nbsp;{{q.option2}}</p>
+                          </div>
+                          <div class="col-md-6">
+                              <p><b>3]</b>&nbsp;{{q.option3}}</p>
+                          </div>
+                          <div class="col-md-6">
+                              <p><b>4]</b>&nbsp;{{q.option4}}</p>
+                          </div>
+                      </div>
+                      <hr>
+                      <p > <b>Correct Answer :</b> {{q.answer}}</p>
+                  </div>
+                
+               </mat-card-content>
+               <mat-card-actions>
+
+                <button (click)="deleteQuestion(q.quesId)" mat-stroked-button color="primary">Delete</button>
+                <button [routerLink]="'/admin-dashboard/question/'+ q.quesId" mat-stroked-button color="primary">Update</button>
+               </mat-card-actions>
+
+           </mat-card>
+
+        </div>
+    </div>
+</div>
